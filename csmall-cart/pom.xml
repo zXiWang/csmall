@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xiwang</groupId>
+        <artifactId>csmall</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.xiwang</groupId>
+    <artifactId>csmall-cart</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>csmall-cart</name>
+    <description>Demo project for Spring Boot</description>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>csmall-cart-service</module>
+        <module>csmall-cart-webapi</module>
+    </modules>
+    <dependencies>
+
+    </dependencies>
+
+</project>

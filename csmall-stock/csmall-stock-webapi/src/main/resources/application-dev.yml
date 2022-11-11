@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: nacos-stock # 定义当前服务名称
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 指定正在运行的Nacos服务器的位置
+    sentinel:
+      transport:
+        dashboard: localhost:8080 # 配置Sentinel提供的运行状态仪表台的位置
+        # 执行限流的端口号,每个项目需要设置不同的端口号
+        port: 8721
+  datasource:
+    url: jdbc:mysql://localhost:3306/csmall_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: root
+seata:
+  tx-service-group: csmall_group #定义事务的分组,一般是以项目为单位的,方便与其他项目区分
+  service:
+    vgroup-mapping:
+      csmall_group: default # csmall_group分组的配置,default会默认配置Seata
+    grouplist:
+      default: localhost:8091 # 配置Seata服务的地址和端口号
+dubbo:
+  protocol:
+    #    port设置为-1 表示当前dubbo框架使用的端口自动寻找
+    #    使用端口的规则是从20880开始寻找可用端口,如果当前端口号占用,就继续加1寻找,直到找到可用的端口号
+    port: -1
+    #    设置连接的名称,一般固定为dubbo即可
+    name: dubbo
+  registry:
+    #    指定当前Dubbo服务
+    address: nacos://localhost:8848
+  consumer:
+    #    当前项目启动时,是否检查当前项目需要的所有Dubbo服务是否可用
+    #    设置为false表示不检查,以减少启动时出现的错误
+    check: false
+    timeout: 5000
