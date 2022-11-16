@@ -18,8 +18,8 @@ public interface CartMapper {
     @Delete("delete from cart_tbl where user_id=#{userId} and " +
             " commodity_code=#{commodityCode}")
     int deleteCartByUserIdAndCommodityCode(
-                                @Param("userId") String userId,
-                                @Param("commodityCode") String commodityCode);
+            @Param("userId") String userId,
+            @Param("commodityCode") String commodityCode);
 }
 
 

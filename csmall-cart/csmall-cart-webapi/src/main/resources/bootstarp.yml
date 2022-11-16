@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        # 设置配置中心的ip和端口
+        server-addr: localhost:8848
+        # namespace默认public可以省略
+        # group默认DEFAULT_GROUP也可以省略的
+        group: DEFAULT_GROUP
+        # 指定要读取配置文件的后缀名
+        file-extension: yaml
+        # 配置中心约定,当确定命名空间,分组名称和后缀名称后
+        # 配置中心会自动读取当前文件名为[服务器名称].[后缀名称]的配置信息
+        # 具体到本项目 服务器名称为 nacos-cart,后缀名为yaml
+        # 所以会读取配置文件名为"nacos-cart.yaml"的信息

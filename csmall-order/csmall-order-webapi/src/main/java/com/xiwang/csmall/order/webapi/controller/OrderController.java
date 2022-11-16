@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 @RestController
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     @Autowired
     IOrderService iOrderService;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @PostMapping("/add")
     @ApiOperation("新增订单功能")
@@ -41,5 +44,20 @@ public class OrderController {
             Integer page, Integer pageSize) {
         JsonPage<Order> orders = iOrderService.getAllOrdersByPage(page, pageSize);
         return JsonResult.ok("查询完成!", orders);
+    }
+
+    @GetMapping("/rest")
+    @ApiOperation("restTemplate调用删除购物车")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "用户id", name = "userId", example = "UU100"),
+            @ApiImplicitParam(value = "商品编号", name = "commodityCode", example = "PC100")
+    })
+    public JsonResult restTest(String userId, String commodityCode) {
+        String url = "http://nacos-cart/base/cart/delete?" +
+                "userId={1}&commodityCode={2}";
+        JsonResult jsonResult = restTemplate.getForObject(
+                url, JsonResult.class, userId, commodityCode);
+        return JsonResult.ok("完成!");
+
     }
 }

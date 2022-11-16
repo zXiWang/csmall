@@ -12,7 +12,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +24,7 @@ public class StockController {
     @Autowired
     private IStockService stockService;
 
-    @PostMapping("/reduce/count")
+    @GetMapping("/reduce/count")
     @ApiOperation("减少商品库存数")
     @SentinelResource(value = "减少商品库存数", blockHandler = "blockError", fallback = "fallbackError")
     public JsonResult reduceCommodityCount(StockReduceCountDTO stockReduceCountDTO) {

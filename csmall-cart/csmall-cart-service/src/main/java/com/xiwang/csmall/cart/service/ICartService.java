@@ -9,7 +9,7 @@ public interface ICartService {
     void cartAdd(CartAddDTO cartAddDTO);
 
     // 删除购物车中商品的业务逻辑层方法
-    void deleteUserCart(String userId,String commodityCode);
+    void deleteUserCart(String userId, String commodityCode);
 
 
 }
