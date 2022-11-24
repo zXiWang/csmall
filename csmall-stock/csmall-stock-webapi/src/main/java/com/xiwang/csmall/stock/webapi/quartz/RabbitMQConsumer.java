@@ -1,7 +1,7 @@
 package com.xiwang.csmall.stock.webapi.quartz;
 
-import cn.tedu.csmall.commons.pojo.stock.model.Stock;
-import cn.tedu.csmall.stock.webapi.quartz.config.RabbitMQConfig;
+import com.xiwang.csmall.commons.pojo.stock.model.Stock;
+import com.xiwang.csmall.stock.webapi.quartz.config.RabbitMQConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
